@@ -35,5 +35,8 @@
     <ClCompile Include="Exercise4_1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercise4_2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

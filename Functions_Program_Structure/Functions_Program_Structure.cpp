@@ -3,18 +3,32 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <float.h>
+#include <stdlib.h>         /* for atof() */
 #include "Exercise4_1.c"
+#include "Exercise4_2.c"
 
-#define MAXLINE 1000		//Maximum input line length
+#define MAXLINE 1000		// Maximum input line length
+#define MAXVAL 100			// max depth of val stack
+#define BUFFSIZE 100		
 
 int getline(char s[], int lim);
 int strIndex(char source[], char searchfor[]);
 int getline4_1(char s[], int limit);
 int strrindex(char s[], char p[]);
 double atof(char s[]);
+double atof_2(char s[]);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
+char buf[BUFFSIZE];				  // buffer for ungetch
+int bufp = 0;					  // next buffer position in buff
+
+#define MAXOP 100			// max size of operand and operator
+#define NUMBER '0'			// signal of number was found
+
+int getop(char s[]);
+void push(double f);
+double pop(void);
 
 int main() {
 	/* --------- find all lines matching pattern ---------------- */
@@ -57,7 +71,47 @@ int main() {
 	return 0;*/
 	/* ---------------------------------------------------------- */
 
-	return 0;
+	/* --------------- External Variables ---------------------- */
+	// Reverse Polish calculator
+	int type;
+	double op2;
+	char s[MAXOP];
+
+	while ((type = getop(s)) != EOF) {
+		switch (type) {
+		case NUMBER:
+			push(atof(type));
+			break;
+		case '+':
+			push(pop() + pop());
+			break;
+		case '*':
+			push(pop() * pop());
+			break;
+		case '-':
+			op2 = pop();
+			push(pop() - op2);
+			break;
+		case '/':
+			op2 = pop();
+			if (op2 != 0.0) {
+				push(pop() / op2);
+			}
+			else {
+				printf("Error: Division zero !");
+			}
+			break;
+		case '\n':
+			printf("\t%.8g\n", pop());
+			break;
+		default:
+			printf("Error: Unknown command %s\n", s);
+			break;
+		}
+	}
+	/* --------------------------------------------------------- */
+
+	return 0.0;
 }
 
 /* ---------- get lines into s and return length ---------------- */
@@ -110,5 +164,47 @@ double atof(char s[]) {
 		power *= 10.0;
 	}
 	return sign * (val / power);
+}
+
+int sp = 0;					// next free stack position
+double val[MAXVAL];			// value stack
+
+/* function push: push f onto value stack */
+void push(double f) {
+	if (sp < MAXVAL) {
+		val[sp++] = f;
+	}
+	else {
+		printf("Error: Stack full! Can not push %g\n", f);
+	}
+}
+
+/* function pop: pop and return top value of stack */
+double pop(void) {
+	if (sp > 0) {
+		return val[--sp];
+	}
+	else {
+		printf("Error: Empty Stack !");
+		return 0.0;
+	}
+}
+
+int getch(void);
+void ungetch(int c);
+
+/* function getop: get next operator or numeric operand */
+int getop(char s[]) {
+	int i, c;
+
+	return;
+}
+
+int getch(void) {
+	return;
+}
+
+void ungetch(int c) {
+	return;
 }
 
