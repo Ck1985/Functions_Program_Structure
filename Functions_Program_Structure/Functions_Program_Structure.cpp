@@ -6,22 +6,25 @@
 #include <stdlib.h>         /* for atof() */
 #include "Exercise4_1.c"
 #include "Exercise4_2.c"
+#include "Exercise4_3.c"
 
 #define MAXLINE 1000		// Maximum input line length
-#define MAXVAL 100			// max depth of val stack
-#define BUFFSIZE 100		
+#define MAXVAL 100			// max depth of val stack	
 
 int getline(char s[], int lim);
 int strIndex(char source[], char searchfor[]);
 int getline4_1(char s[], int limit);
 int strrindex(char s[], char p[]);
-double atof(char s[]);
+double myAtof(char s[]);
 double atof_2(char s[]);
+void push4_3(double value);
+double pop4_3(void);
+int getop4_3(char s[MAXVAL4_3]);
+int getch4_3(void);
+void ungetch4_3(int c);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
-char buf[BUFFSIZE];				  // buffer for ungetch
-int bufp = 0;					  // next buffer position in buff
 
 #define MAXOP 100			// max size of operand and operator
 #define NUMBER '0'			// signal of number was found
@@ -29,6 +32,8 @@ int bufp = 0;					  // next buffer position in buff
 int getop(char s[]);
 void push(double f);
 double pop(void);
+
+#define MAXOP4_3 100
 
 int main() {
 	/* --------- find all lines matching pattern ---------------- */
@@ -73,14 +78,14 @@ int main() {
 
 	/* --------------- External Variables ---------------------- */
 	// Reverse Polish calculator
-	int type;
+	/*int type;
 	double op2;
 	char s[MAXOP];
 
 	while ((type = getop(s)) != EOF) {
 		switch (type) {
 		case NUMBER:
-			push(atof(type));
+			push(atof(s));
 			break;
 		case '+':
 			push(pop() + pop());
@@ -108,10 +113,45 @@ int main() {
 			printf("Error: Unknown command %s\n", s);
 			break;
 		}
+	}*/
+
+	// Exercise4_3
+	int type;
+	double op2;
+	char s[MAXOP4_3];
+	while ((type = getop4_3(s)) != EOF) {
+		switch (type) {
+		case NUMBER4_3:
+			push4_3(atof(s));
+			break;
+		case '+':
+			push4_3(pop4_3() + pop4_3());
+			break;
+		case '-':
+			op2 = pop4_3();
+			push4_3(pop4_3() - op2);
+			break;
+		case '*':
+			push4_3(pop4_3() * pop4_3());
+			break;
+		case '/':
+			op2 = pop4_3();
+			push4_3(pop4_3() / op2);
+			break;
+		case '%':
+			op2 = pop4_3();
+			push4_3((int)pop4_3() % (int)op2);
+			break;
+		case '\n':
+			printf("Result of Reverse Polish notation is: %g\n", pop4_3());
+			break;
+		default:
+			printf("Error: Commnad unknow !!!");
+		}
 	}
 	/* --------------------------------------------------------- */
 
-	return 0.0;
+	return 0;
 }
 
 /* ---------- get lines into s and return length ---------------- */
@@ -144,12 +184,12 @@ int strIndex(char s[], char t[]) {
 }
 
 /* atof: Convert string s to double */
-double atof(char s[]) {
+double myAtof(char s[]) {
 	int i, sign;
 	double val, power;
 	for (i = 0; isspace(s[i]); i++)
 		;
-	sign = ((s[i] == '-') ? -1 : 1);
+	sign = (s[i] == '-') ? -1 : 1;
 	if (s[i] == '+' || s[i] == '-') {
 		i++;
 	}
@@ -208,7 +248,7 @@ int getop(char s[]) {
 		while (isdigit(s[++i] = c = getch()))
 			;
 	}
-	if (c = '.') {
+	if (c == '.') {
 		while (isdigit(s[++i] = c = getch()))
 			;
 	}
@@ -219,11 +259,22 @@ int getop(char s[]) {
 	return NUMBER;
 }
 
+#define BUFFSIZE 100
+
+char buff[BUFFSIZE];		// buffer for ungetch
+int bufp = 0;				// next free position on buf
+
 int getch(void) {
-	return;
+	return (bufp > 0) ? buff[--bufp] : getchar();
 }
 
 void ungetch(int c) {
-	return;
+	if (bufp >= BUFFSIZE) {
+		printf("ungetch: Too many character ");
+	}
+	else {
+		buff[bufp++] = c;
+	}
+	return 0;
 }
 
