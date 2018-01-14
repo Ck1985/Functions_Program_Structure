@@ -5,7 +5,7 @@
 static double atof_2(char s[]) {
 	int i, sign, esign, exp;
 	double val, power;
-	int pow(int base, int exp);
+	int pow4_2(int base, int exp);
 
 	for (i = 0; isspace(s[i]); i++)
 		;
@@ -34,15 +34,15 @@ static double atof_2(char s[]) {
 		exp = 10.0 * exp + (s[i] - '0');
 	}
 	if (esign == '-') {
-		return sign * (val / power) / pow(10, exp);
+		return sign * (val / power) / pow4_2(10, exp);
 	}
 	else {
-		return sign * (val / power) * pow(10, exp);
+		return sign * (val / power) * pow4_2(10, exp);
 	}
 	return -1;
 }
 
-static int pow(int base, int exp) {
+static int pow4_2(int base, int exp) {
 	int power = 1;
 	while (exp-- > 0) {
 		power *= base;

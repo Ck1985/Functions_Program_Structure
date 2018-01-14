@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <float.h>
 #include <stdlib.h>         /* for atof() */
+#include <math.h>
 #include "Exercise4_1.c"
 #include "Exercise4_2.c"
 #include "Exercise4_3.c"
@@ -136,11 +137,21 @@ int main() {
 			break;
 		case '/':
 			op2 = pop4_3();
-			push4_3(pop4_3() / op2);
+			if (op2 == 0.0) {
+				printf("Error ! Division zero ");
+			}
+			else {
+				push4_3(pop4_3() / op2);
+			}
 			break;
 		case '%':
 			op2 = pop4_3();
-			push4_3((int)pop4_3() % (int)op2);
+			if (op2 == 0.0) {
+				printf("Error! Division Zero");
+			}
+			else {
+				push4_3(fmod(pop4_3(), op2));
+			}
 			break;
 		case '\n':
 			printf("Result of Reverse Polish notation is: %g\n", pop4_3());
