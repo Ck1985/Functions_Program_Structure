@@ -164,7 +164,7 @@ int main() {
 	}*/
 
 	//Exercise4_4
-	int type;
+	/*int type;
 	double op1, op2;
 	char s[MAXOP4_3];
 
@@ -227,7 +227,9 @@ int main() {
 			printf("Unknow Commnad !!!");
 			break;
 		}
-}
+	}*/
+
+	
 	/* --------------------------------------------------------- */
 
 	return 0;
