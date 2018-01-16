@@ -8,6 +8,7 @@
 #include "Exercise4_1.c"
 #include "Exercise4_2.c"
 #include "Exercise4_3.c"
+#include "Exercise4_4.c"
 
 #define MAXLINE 1000		// Maximum input line length
 #define MAXVAL 100			// max depth of val stack	
@@ -23,6 +24,7 @@ double pop4_3(void);
 int getop4_3(char s[MAXVAL4_3]);
 int getch4_3(void);
 void ungetch4_3(int c);
+void clear();
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
@@ -117,7 +119,7 @@ int main() {
 	}*/
 
 	// Exercise4_3
-	int type;
+	/*int type;
 	double op2;
 	char s[MAXOP4_3];
 	while ((type = getop4_3(s)) != EOF) {
@@ -159,7 +161,73 @@ int main() {
 		default:
 			printf("Error: Commnad unknow !!!");
 		}
-	}
+	}*/
+
+	//Exercise4_4
+	int type;
+	double op1, op2;
+	char s[MAXOP4_3];
+
+	while ((type = getop4_3(s)) != EOF) {
+		switch (type) {
+		case NUMBER4_3:
+			push4_3(atof(s));
+			break;
+		case '+':
+			push4_3(pop4_3() + pop4_3());
+			break;
+		case '-':
+			op2 = pop4_3();
+			push4_3(pop4_3() - op2);
+			break;
+		case '*':
+			push4_3(pop4_3() * pop4_3());
+			break;
+		case '/':
+			op2 = pop4_3();
+			if (op2 != 0.0) {
+				push4_3(pop4_3() / op2);
+			}
+			else {
+				printf("Error! Division zero");
+			}
+			break;
+		case '%':
+			op2 = pop4_3();
+			if (op2 != 0.0) {
+				push4_3(fmod(pop4_3(), op2));
+			}
+			else {
+				printf("Error ! Division zero");
+			}
+			break;
+		case 't':
+			op2 = pop4_3();
+			printf("The top element stack is: %t.8g\n", op2);
+			push4_3(op2);
+			break;
+		case 'd':
+			op2 = pop4_3();
+			push4_3(op2);
+			push4_3(op2);
+			break;
+		case 's':
+			op1 = pop4_3();
+			op2 = pop4_3();
+			push4_3(op1);
+			push4_3(op2);
+			break;
+		case 'c':
+			clear();
+			break;
+		case '\n':
+			printf("Result of reverse Polish notation is: %\t.8g\n", pop4_3());
+			break;
+		default:
+			printf("Unknow Commnad !!!");
+			break;
+		}
+}
 	/* --------------------------------------------------------- */
 
 	return 0;
@@ -288,4 +356,6 @@ void ungetch(int c) {
 	}
 	return 0;
 }
+
+
 

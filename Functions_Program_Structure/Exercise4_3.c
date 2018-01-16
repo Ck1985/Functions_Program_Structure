@@ -1,13 +1,13 @@
-#include "stdio.h"
-#include "ctype.h"
+#include <stdio.h>
+#include <ctype.h>
 
 #define MAXVAL4_3 100
 #define NUMBER4_3 '0'
 #define BUFFERSIZE 100
 
-static int bufferPos = 0;
+extern int bufferPos;
 char buffer[BUFFERSIZE];
-static int stackPos = 0;
+extern int stackPos;
 double stackVal[MAXVAL4_3];
 
 void ungetch4_3(int c);
@@ -17,16 +17,18 @@ double pop4_3(void);
 int getop4_3(char s[MAXVAL4_3]);
 
 static void push4_3(double value) {
+	int stackPos = 0;
 	if (stackPos > MAXVAL4_3) {
 		printf("Error: Stack is full !");
 	}
 	else {
 		stackVal[stackPos++] = value;
 	}
-	
+	return 0;
 }
 
 static double pop4_3(void) {
+	int stackPos = 0;
 	if (stackPos > 0) {
 		return stackVal[--stackPos];
 	}
@@ -75,16 +77,24 @@ static int getop4_3(char s[MAXVAL4_3]) {
 }
 
 static int getch4_3(void) {
+	int bufferPos = 0;
 	return (bufferPos > 0) ? buffer[--bufferPos] : getchar();
 }
 
 static void ungetch4_3(int c) {
+	int bufferPos = 0;
 	if (bufferPos >= BUFFERSIZE) {
 		printf("Error: Too many character !!!");
 	}
 	else {
 		buffer[bufferPos++] = c;
 	}
+	return 0;
+}
+
+static void clear() {
+	int stackPos = 0;
+	stackPos = 0;
 	return 0;
 }
 
