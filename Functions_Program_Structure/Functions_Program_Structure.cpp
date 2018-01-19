@@ -9,6 +9,9 @@
 #include "Exercise4_2.c"
 #include "Exercise4_3.c"
 #include "Exercise4_4.c"
+#include "Exercise4_5.c"
+#include "Exercise4_8.c"
+#include "Exercise4_9.c"
 
 #define MAXLINE 1000		// Maximum input line length
 #define MAXVAL 100			// max depth of val stack	
@@ -25,6 +28,10 @@ int getop4_3(char s[MAXVAL4_3]);
 int getch4_3(void);
 void ungetch4_3(int c);
 void clear();
+int getch4_8();
+void ungetch4_8(int c);
+int getch4_9(void);
+void ungetch4_9(int c);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
@@ -35,8 +42,6 @@ char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
 int getop(char s[]);
 void push(double f);
 double pop(void);
-
-#define MAXOP4_3 100
 
 int main() {
 	/* --------- find all lines matching pattern ---------------- */
@@ -228,8 +233,117 @@ int main() {
 			break;
 		}
 	}*/
-
 	
+	//Exercise4_5
+	/*int type, c;
+	double op1, op2;
+	double finalResult = 0.0;
+	char s[MAXOP4_5];
+	char nameFuncSin[] = "msin";
+	char nameFuncExp[] = "mexp";
+	char nameFuncPow[] = "mpow";
+
+	while ((type = getop4_5(s)) != EOF) {
+		switch (type) {
+		case NUMBER4_5:									// When getop return NUMBER pushing value to Stack
+			push4_5(atof(s));
+			break;
+		case NAMEMATHFUNCTION:							// When getop return NAMEMATH pushing result of any function mathematic into stack
+			if (strcmp(s, nameFuncSin) == 0) {
+				push4_5(sin(pop4_5()));
+			}
+			else if (strcmp(s, nameFuncExp) == 0) {
+				push4_5(exp(pop4_5()));
+			}
+			else if (strcmp(s, nameFuncPow) == 0) {
+				op1 = pop4_5();
+				op2 = pop4_5();
+				push4_5(pow(op2, op1));
+			}
+			else {
+				printf("Error! function %s is not supported\n");
+			}
+			break;
+		case '+':										// When getop return character '+' pushing addition of two values in stack after that pushing result back into stack
+			push4_5(pop4_5() + pop4_5());
+			break;
+		case '-':										// When getop return character '-' pushing sub of two values in stack after that pushing result back into stack
+			op1 = pop4_5();
+			push4_5(pop4_5() - op1);
+			break;
+		case '*':										// When getop return character '*' pushing sub of two values in stack after that pushing result back into stack
+			push4_5(pop4_5() * pop4_5());
+			break;
+		case '/':										// When getop return character ' /' pushing sub of two values in stack after that pushing result back into stack
+			op1 = pop4_5();
+			if (op1 != 0.0) {
+				push4_5(pop4_5() / op1);
+				break;
+			}
+			else {
+				printf("Error ! Division zero");
+			}
+			break;
+		case '%':										// When getop return character '%' pushing sub of two values in stack after that pushing result back into stack
+			op1 = pop4_5();
+			if (op1 != 0.0) {
+				push4_5(fmod(pop4_5(), op1));
+			}
+			else {
+				printf("Error ! Division zero");
+			}
+			break;
+		case '?':										// get the top element in Stack
+			op1 = pop4_5();
+			printf("The top element of Stack is %\t.8g\n", op1);
+			push4_5(op1);
+			break;
+		case 's':										// Swap two values in Stack
+			op1 = pop4_5();
+			op2 = pop4_5();
+			push4_5(op1);
+			push4_5(op2);
+			break;
+		case 'd':										// Pushing two values duplicate in Stack
+			op1 = pop4_5();
+			push4_5(op1);
+			push4_5(op1);
+			break;
+		case 'c':										// Clearing Stack
+			clear4_5();
+			break;
+		case '\n':										// Printing the final result in Stack
+			finalResult = pop4_5();
+			printf("Result of Operator reverse Polish notation: %.8g\n", finalResult);
+			break;
+		default:
+			printf("Error ! Unknow Commnad");			// Anoying Error Command Unknow 
+			break;
+		}
+	}*/
+
+	// Exercise4_6: 
+	// See 4_5
+
+	// Exercise4_7
+	// See 4_5
+
+	// Exercise4_8
+	/*int c;
+	c = '*';
+	ungetch4_8(c);
+	while ((c = getch4_8()) != EOF) {
+		putchar(c);
+	}*/
+	
+	// Exercise4_9
+	int c;
+	c = -1;
+
+	ungetch4_9(c);
+	while ((c = getch4_9()) != EOF) {
+		putchar(c);
+	}
 	/* --------------------------------------------------------- */
 
 	return 0;

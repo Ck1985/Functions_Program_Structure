@@ -151,6 +151,11 @@
     <ClCompile Include="Exercise4_1.c" />
     <ClCompile Include="Exercise4_3.c" />
     <ClCompile Include="Exercise4_4.c" />
+    <ClCompile Include="Exercise4_5.c" />
+    <ClCompile Include="Exercise4_6.c" />
+    <ClCompile Include="Exercise4_7.c" />
+    <ClCompile Include="Exercise4_8.c" />
+    <ClCompile Include="Exercise4_9.c" />
     <ClCompile Include="Functions_Program_Structure.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>

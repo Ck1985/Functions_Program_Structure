@@ -5,9 +5,9 @@
 #define NUMBER4_3 '0'
 #define BUFFERSIZE 100
 
-extern int bufferPos;
+int bufferPos;
 char buffer[BUFFERSIZE];
-extern int stackPos;
+int stackPos;
 double stackVal[MAXVAL4_3];
 
 void ungetch4_3(int c);
@@ -17,7 +17,6 @@ double pop4_3(void);
 int getop4_3(char s[MAXVAL4_3]);
 
 static void push4_3(double value) {
-	int stackPos = 0;
 	if (stackPos > MAXVAL4_3) {
 		printf("Error: Stack is full !");
 	}
@@ -28,7 +27,6 @@ static void push4_3(double value) {
 }
 
 static double pop4_3(void) {
-	int stackPos = 0;
 	if (stackPos > 0) {
 		return stackVal[--stackPos];
 	}
@@ -77,12 +75,10 @@ static int getop4_3(char s[MAXVAL4_3]) {
 }
 
 static int getch4_3(void) {
-	int bufferPos = 0;
 	return (bufferPos > 0) ? buffer[--bufferPos] : getchar();
 }
 
 static void ungetch4_3(int c) {
-	int bufferPos = 0;
 	if (bufferPos >= BUFFERSIZE) {
 		printf("Error: Too many character !!!");
 	}
