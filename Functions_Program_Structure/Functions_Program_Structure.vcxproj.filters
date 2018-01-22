@@ -59,5 +59,8 @@
     <ClCompile Include="Exercise4_9.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercise4_10.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

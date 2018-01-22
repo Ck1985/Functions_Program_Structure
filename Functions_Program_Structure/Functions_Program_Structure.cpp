@@ -12,6 +12,7 @@
 #include "Exercise4_5.c"
 #include "Exercise4_8.c"
 #include "Exercise4_9.c"
+#include "Exercise4_10.c"
 
 #define MAXLINE 1000		// Maximum input line length
 #define MAXVAL 100			// max depth of val stack	
@@ -32,6 +33,10 @@ int getch4_8();
 void ungetch4_8(int c);
 int getch4_9(void);
 void ungetch4_9(int c);
+int getop4_10(char s[MAXOP4_10], char input[MAXLEN]);
+double pop4_10(void);
+void push4_10(double value);
+int getline4_10(char s[], int lim);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
@@ -337,13 +342,51 @@ int main() {
 	}*/
 	
 	// Exercise4_9
-	int c;
+	/*int c;
 	c = -1;
 
 	ungetch4_9(c);
 	while ((c = getch4_9()) != EOF) {
 		putchar(c);
+	}*/
+
+	// Exercise4_10
+	int type;
+	double op2;
+	getline4_10(input, MAXLEN);
+	while ((type = getop4_10(arrayValue4_10, input)) != EOF) {
+		switch (type) {
+		case NUMBER4_10:
+			push4_10(atof(arrayValue4_10));
+			break;
+		case '+':
+			push4_10(pop4_10() + pop4_10());
+			break;
+		case '-':
+			op2 = pop4_10();
+			push4_10(pop4_10() - op2);
+			break;
+		case '*':
+			push4_10(pop4_10() * pop4_10());
+			break;
+		case '/':
+			op2 = pop4_10();
+			if (op2 != 0.0) {
+				push4_10(pop4_10() / op2);
+			}
+			else {
+				printf("Error division zero");
+			}
+			break;
+		case '\n':
+			printf("Result of reverse Poland notation: %.8g\n", pop4_10());
+			break;
+		default:
+			printf("Error! Unknown commnad\n");
+			break;
+		}
 	}
+
 	/* --------------------------------------------------------- */
 
 	return 0;
