@@ -350,7 +350,7 @@ int main() {
 		putchar(c);
 	}*/
 
-	// Exercise4_10
+	// Exercise4_10 ...........
 	int type;
 	double op2;
 	getline4_10(input, MAXLEN);
