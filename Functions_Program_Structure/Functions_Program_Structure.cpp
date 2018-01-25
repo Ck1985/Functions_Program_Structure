@@ -48,7 +48,7 @@ int getop(char s[]);
 void push(double f);
 double pop(void);
 
-int main() {
+//int main() {
 	/* --------- find all lines matching pattern ---------------- */
 	/*char line[MAXLINE];
 	int found = 0;
@@ -351,7 +351,7 @@ int main() {
 	}*/
 
 	// Exercise4_10 ...........
-	int type;
+	/*int type;
 	double op2;
 	getline4_10(input, MAXLEN);
 	while ((type = getop4_10(arrayValue4_10, input)) != EOF) {
@@ -385,12 +385,30 @@ int main() {
 			printf("Error! Unknown commnad\n");
 			break;
 		}
-	}
+	}*/
 
 	/* --------------------------------------------------------- */
 
-	return 0;
-}
+	/* -------------------- Scopes Rules ------------------ */
+	// In despite of spSR and main declaration in one file but the use spSR before define it
+	// So when we use it we have to extern int spSR ......
+	/*extern int spSR;
+	extern double valSR[];
+	spSR = 5;*/
+
+	// When declaration in other file .......
+	/*extern int spSR2;
+	extern double valSR2[];
+	spSR2 = 15;*/
+	/* ---------------------------------------------------- */
+
+	/* -------------- Header Files ------------------------ */
+	// Now we consider calculator program into multi source code file .......
+	
+	/* ---------------------------------------------------- */
+
+	//return 0;
+//}
 
 /* ---------- get lines into s and return length ---------------- */
 int getline(char s[], int lim) {
@@ -514,6 +532,18 @@ void ungetch(int c) {
 		buff[bufp++] = c;
 	}
 	return 0;
+}
+
+int spSR = 0;
+double valSR[MAXVAL];
+
+// function main, spSR, valSR, pushSR and popSR are defined in one file
+// we can use spSR and val in pushSR and popSR no further declaration needed ......
+void pushSR(double value) {
+	spSR = 6;
+}
+double popSR(void) {
+	spSR = 7;
 }
 
 

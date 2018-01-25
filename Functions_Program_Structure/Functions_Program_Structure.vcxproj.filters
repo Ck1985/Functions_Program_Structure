@@ -24,6 +24,9 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="calcHF.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -60,6 +63,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Exercise4_10.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="File_1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="File_2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainHF.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getchHF.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getopHF.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stackHF.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
