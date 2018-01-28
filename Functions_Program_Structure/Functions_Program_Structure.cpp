@@ -37,6 +37,7 @@ int getop4_10(char s[MAXOP4_10], char input[MAXLEN]);
 double pop4_10(void);
 void push4_10(double value);
 int getline4_10(char s[], int lim);
+void function(int x, int y);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
@@ -404,10 +405,36 @@ int main() {
 
 	/* -------------- Header Files ------------------------ */
 	// Now we consider calculator program into multi source code file .......
-	
+	// mainHF.c ......
 	/* ---------------------------------------------------- */
 
-	//return 0;
+	/* -------------- Register Variables ------------------ */
+	/*register int x;
+	register char t;
+
+	register unsigned m;
+	register long n;
+	registerFormalParameter(m, n);*/
+	/* ---------------------------------------------------- */
+
+	/* ----------------- Block Structer ------------------- */
+	// inner i is not related to outer i .....
+
+	int i = 5;
+	if (i > 0) {
+		int i;		// Declare a new i ....
+		for (i = 0; i < 10; i++) {}
+	}
+
+	int x = 6; 
+	int y = 7;
+
+	function(x, y);
+	// Note: automatic (local) variable inner local i declared and initialized in a block, they will initialized every time block entered
+	// An static automatic variables just only initialized once when the first time block is entered.
+	/* ---------------------------------------------------- */
+
+	return 0;
 }
 
 /* ---------- get lines into s and return length ---------------- */
@@ -542,8 +569,23 @@ double valSR[MAXVAL];
 void pushSR(double value) {
 	spSR = 6;
 }
+
 double popSR(void) {
 	spSR = 7;
+}
+
+// Using register in formal parameter of function ......
+void registerFormalParameter(register unsigned m, register long n) {
+	register int x;
+}
+
+// Automatic variables including formal parameter hide external variables of the same name
+int x;
+int y;
+int z;
+
+void function(int x, int y) {
+	int z = 0;
 }
 
 
