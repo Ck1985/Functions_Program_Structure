@@ -48,7 +48,7 @@ int getop(char s[]);
 void push(double f);
 double pop(void);
 
-//int main() {
+int main() {
 	/* --------- find all lines matching pattern ---------------- */
 	/*char line[MAXLINE];
 	int found = 0;
@@ -408,7 +408,7 @@ double pop(void);
 	/* ---------------------------------------------------- */
 
 	//return 0;
-//}
+}
 
 /* ---------- get lines into s and return length ---------------- */
 int getline(char s[], int lim) {

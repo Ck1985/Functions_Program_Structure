@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Exercise4_10.c" />
+    <ClCompile Include="Exercise4_11.c" />
     <ClCompile Include="Exercise4_2.c" />
     <ClCompile Include="Exercise4_1.c" />
     <ClCompile Include="Exercise4_3.c" />
