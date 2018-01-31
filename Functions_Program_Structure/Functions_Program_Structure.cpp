@@ -38,6 +38,10 @@ double pop4_10(void);
 void push4_10(double value);
 int getline4_10(char s[], int lim);
 void function(int x, int y);
+int beanSearch(int x, int v[], int n);
+void printd(int n);
+void quicksort(int arr[], int low, int high);
+void swap(int arr[], int a, int b);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
@@ -420,7 +424,7 @@ int main() {
 	/* ----------------- Block Structer ------------------- */
 	// inner i is not related to outer i .....
 
-	int i = 5;
+	/*int i = 5;
 	if (i > 0) {
 		int i;		// Declare a new i ....
 		for (i = 0; i < 10; i++) {}
@@ -429,11 +433,48 @@ int main() {
 	int x = 6; 
 	int y = 7;
 
-	function(x, y);
+	function(x, y);/*
 	// Note: automatic (local) variable inner local i declared and initialized in a block, they will initialized every time block entered
 	// An static automatic variables just only initialized once when the first time block is entered.
 	/* ---------------------------------------------------- */
 
+	/* ------------------- Initialization ----------------- */
+	// beanSearch(x, v[], n);
+
+	// Initialization of array:
+	//int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	//A string is a special initialization array
+	//char pattern[] = "ould";
+	// Equals:
+	//char pattern_2[] = { 'o', 'u', 'l', 'd', '\0' };
+	/* ---------------------------------------------------- */
+
+	/* ------------ Recursion ----------------------------- */
+	//int n = 3456;
+	//printd(n);
+
+	// QuickSort:
+	/*int arr[2] = { 5, 6 };
+	swap(arr, 0, 1);
+	printf("arr[0] = %d && arr[1] = %d\n", arr[0], arr[1]);
+	for (int i = 0; i < 2; i++) {
+		printf("%d ", arr[i]);
+	}*/
+	
+	int arr[] = { 3,1,4,1,5,9,2,6,5,3 };
+	printf("Array before sorted: \n");
+	for (int i = 0; i < 10; i++) {
+		printf("%d  ", arr[i]);
+	}
+	printf("\n");
+	printf("After using quicksort to sort array: \n");
+	quicksort(arr, 1, 9);
+	for (int i = 0; i < 10; i++) {
+		printf("%d  ", arr[i]);
+	}
+	printf("\n");
+	/* ---------------------------------------------------- */
 	return 0;
 }
 
@@ -587,6 +628,92 @@ int z;
 void function(int x, int y) {
 	int z = 0;
 }
+
+// Initialization 
+// external and static variables: Without explicit initialization guranteed initialized to zero:
+// automatic variables: have undefined initialization:
+
+// external and static variables must being a constant expression. They just initializated once when begin the program.
+// automatic and register variables are initializated each time the block or function has been entered.
+
+int k = 1;
+char w = '\n';
+long days = 1000L * 60L * 60L * 24L;
+
+int beanSearch(int x, int v[], int n) {
+	//int low = 0;
+	//int high = n - 1;
+	//int mid;
+
+	// Or:
+	int low, high, mid;
+	low = 0;
+	high = n - 1;
+}
+
+// print decimal n:
+void printd(int n) {
+	if (n < 0) {
+		putchar('-');
+		n = -n;
+	}
+	if (n / 10 > 0) {
+		printd(n / 10);
+	}
+	putchar(n % 10 + '0');
+
+	return 0;
+}
+
+void quicksort(int arr[], int low, int high) {
+	int pivotIndex, firstOnIndex = -1, countFirst = 1, offIndex, lastOffIndex = -1;
+	pivotIndex = low - 1;
+
+	if (low >= high) {
+		return 0;
+	}
+
+	for (int i = low; i <= high; i++) {
+			if (arr[i] < arr[pivotIndex]) {
+				if (firstOnIndex == -1) {
+					swap(arr, low, i);
+					offIndex = i;
+				}
+				else {
+					swap(arr, i, firstOnIndex);
+					offIndex = firstOnIndex;
+					firstOnIndex = i;
+				}
+				lastOffIndex = offIndex;
+			}
+			else {
+				if (countFirst == 1) {
+					firstOnIndex = i;
+					countFirst++;
+				}
+			}
+			for (int j = 0; j < 10; j++) {
+				printf("%d ", arr[j]);
+			}
+			printf("\n");
+	}
+	swap(arr, pivotIndex, lastOffIndex);
+	pivotIndex = lastOffIndex;
+	for (int j = 0; j < 10; j++) {
+		printf("%d ", arr[j]);
+	}
+	printf("\n");
+	quicksort(arr, low, pivotIndex - 1);
+	quicksort(arr, pivotIndex + 2, high);
+}
+
+void swap(int arr[], int index1, int index2) {
+	int temp;
+	temp = arr[index1];
+	arr[index1] = arr[index2];
+	arr[index2] = temp;
+}
+
 
 
 
