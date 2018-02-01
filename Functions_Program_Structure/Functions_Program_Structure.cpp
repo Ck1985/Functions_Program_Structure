@@ -13,6 +13,7 @@
 #include "Exercise4_8.c"
 #include "Exercise4_9.c"
 #include "Exercise4_10.c"
+#include "Exercise4_12_13.c"
 
 #define MAXLINE 1000		// Maximum input line length
 #define MAXVAL 100			// max depth of val stack	
@@ -42,6 +43,8 @@ int beanSearch(int x, int v[], int n);
 void printd(int n);
 void quicksort(int arr[], int low, int high);
 void swap(int arr[], int a, int b);
+void itoaRec(int n, char arr[]);
+void showResult(int n, char arr[]);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
@@ -462,7 +465,7 @@ int main() {
 		printf("%d ", arr[i]);
 	}*/
 	
-	int arr[] = { 3,1,4,1,5,9,2,6,5,3 };
+	/*int arr[] = { 3,1,4,1,5,9,2,6,5,3 };
 	printf("Array before sorted: \n");
 	for (int i = 0; i < 10; i++) {
 		printf("%d  ", arr[i]);
@@ -473,7 +476,13 @@ int main() {
 	for (int i = 0; i < 10; i++) {
 		printf("%d  ", arr[i]);
 	}
-	printf("\n");
+	printf("\n");*/
+
+	// Exercise4_12
+	int n = 123456789;
+	char result[10];
+	showResult(n, result);
+
 	/* ---------------------------------------------------- */
 	return 0;
 }
