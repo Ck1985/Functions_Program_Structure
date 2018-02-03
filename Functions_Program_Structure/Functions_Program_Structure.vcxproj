@@ -148,6 +148,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConsMacro.c" />
     <ClCompile Include="Exercise4_10.c" />
     <ClCompile Include="Exercise4_11.c" />
     <ClCompile Include="Exercise4_12_13.c" />
@@ -166,8 +167,12 @@
     <ClCompile Include="getchHF.c" />
     <ClCompile Include="getopHF.c" />
     <ClCompile Include="mainHF.c" />
+    <ClCompile Include="Prog.c" />
     <ClCompile Include="stackHF.c" />
     <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Prog.i" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

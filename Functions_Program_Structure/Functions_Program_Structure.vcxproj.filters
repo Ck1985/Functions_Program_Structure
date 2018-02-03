@@ -89,5 +89,16 @@
     <ClCompile Include="Exercise4_12_13.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Prog.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsMacro.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Prog.i">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

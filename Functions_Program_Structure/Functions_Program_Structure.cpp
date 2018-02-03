@@ -18,6 +18,19 @@
 #define MAXLINE 1000		// Maximum input line length
 #define MAXVAL 100			// max depth of val stack	
 
+#define forever for(;;)
+#define max(A,B) ((A) > (B) ? (A) : (B))
+//Pitfall in Macros:
+//#define cube(x) x * x * x;
+//#define double(x) x + x;
+//Fix Pitfall
+#define cube(x) (x) * (x) * (x)
+#define double(x) ((x) + (x))
+//Using #undef to ensure a routine is really function not Macro:
+#undef getchar()
+
+int getchar(void) {}
+
 int getline(char s[], int lim);
 int strIndex(char source[], char searchfor[]);
 int getline4_1(char s[], int limit);
@@ -478,11 +491,24 @@ int main() {
 	}
 	printf("\n");*/
 
-	// Exercise4_12
-	int n = 123456789;
+	// Exercise4_12_13
+	/*int n = 123456789;
 	char result[10];
-	showResult(n, result);
+	showResult(n, result);*/
 
+	/* ---------------------------------------------------- */
+
+	/* ------------ The C preprocessor -------------------- */
+	// Pitfall in Macros:
+	/*int x = 3;
+	int y = cube(x + 1);
+	int z = 5 * double(x);
+	int m = 5;
+	int n = 6;
+	int max = max(m++, n++);
+	printf("%d\n", max);
+	printf("%d\n", y);
+	printf("%d\n", z);*/
 	/* ---------------------------------------------------- */
 	return 0;
 }
