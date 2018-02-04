@@ -14,6 +14,7 @@
 #include "Exercise4_9.c"
 #include "Exercise4_10.c"
 #include "Exercise4_12_13.c"
+#include "Exercise4_14.c"
 
 #define MAXLINE 1000		// Maximum input line length
 #define MAXVAL 100			// max depth of val stack	
@@ -30,6 +31,12 @@
 #undef getchar()
 
 int getchar(void) {}
+//Concate string with Macro
+#define dprint(param) printf(#param " = %g\n", param)
+#define paste(front, back) front ## back
+
+//Exercise4_14.c
+#define swapMacro(t, x, y) t temp; temp = x; x = y; y = temp
 
 int getline(char s[], int lim);
 int strIndex(char source[], char searchfor[]);
@@ -509,6 +516,15 @@ int main() {
 	printf("%d\n", max);
 	printf("%d\n", y);
 	printf("%d\n", z);*/
+	//Concate string with Macro:
+	/*int x = 3, y = 5;
+	dprint(x / y);*/
+	/*int namei = 10;
+	printf("%d\n",  paste(name, i));*/
+	// Exercise4_14
+	/*int a = 5, b = 6;
+	swapMacro(int, a, b);
+	printf("a = %d & b = %d\n", a, b);*/
 	/* ---------------------------------------------------- */
 	return 0;
 }
