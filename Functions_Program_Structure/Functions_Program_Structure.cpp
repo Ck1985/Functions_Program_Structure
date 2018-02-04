@@ -65,6 +65,7 @@ void quicksort(int arr[], int low, int high);
 void swap(int arr[], int a, int b);
 void itoaRec(int n, char arr[]);
 void showResult(int n, char arr[]);
+void swapByFunc(int x, int y);
 
 char pattern[] = "ould";
 char pattern4_1[] = "caoxuanquy"; /* Pattern to search for */
@@ -522,11 +523,19 @@ int main() {
 	/*int namei = 10;
 	printf("%d\n",  paste(name, i));*/
 	// Exercise4_14
-	/*int a = 5, b = 6;
+	int a = 5, b = 6;
 	swapMacro(int, a, b);
-	printf("a = %d & b = %d\n", a, b);*/
+	//swapByFunc(a, b);
+	printf("a = %d & b = %d\n", a, b);
 	/* ---------------------------------------------------- */
 	return 0;
+}
+
+void swapByFunc(int x, int y) {
+	int temp;
+	temp = x;
+	x = y;
+	y = temp;
 }
 
 /* ---------- get lines into s and return length ---------------- */
