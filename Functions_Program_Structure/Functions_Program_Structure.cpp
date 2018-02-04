@@ -1,6 +1,7 @@
 // Functions_Program_Structure.cpp : Defines the entry point for the console application.
 
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 #include <float.h>
 #include <stdlib.h>         /* for atof() */
@@ -37,6 +38,14 @@ int getchar(void) {}
 
 //Exercise4_14.c
 #define swapMacro(t, x, y) t temp; temp = x; x = y; y = temp
+
+// Conditional Inclusion
+#define SIZE 100
+
+#define US 0
+#define ENGLAND 1
+#define FRANCE 2
+#define ACTIVE_COUNTRY US
 
 int getline(char s[], int lim);
 int strIndex(char source[], char searchfor[]);
@@ -523,10 +532,39 @@ int main() {
 	/*int namei = 10;
 	printf("%d\n",  paste(name, i));*/
 	// Exercise4_14
-	int a = 5, b = 6;
+	/*int a = 5, b = 6;
 	swapMacro(int, a, b);
 	//swapByFunc(a, b);
-	printf("a = %d & b = %d\n", a, b);
+	printf("a = %d & b = %d\n", a, b);*/
+	
+	// ---------- Conditional Inclusion ------------------- */
+	#if SIZE > 99
+		printf("For 100 plus elements\n");
+	#else
+		printf("For less than 100 elements\n");
+	#endif
+
+	#if ACTIVE_COUNTRY == US
+		char currency[] = "dollar";
+	#elif
+		char currency[] = "pound";
+	#else
+		char currency = "franc";
+	#endif
+
+	printf("Currency: %s\n", currency);
+
+	#ifndef PI    // #ifndef equivalen to #if !defined (PI)
+		#define PI	3.14
+	#else
+		printf("PI is defined\n");
+	#endif
+
+	#ifdef PI		//#ifdef equilaven to #if defined (PI)
+			printf("PI is defined\n");
+	#else 
+		#define PI 3.14
+	#endif
 	/* ---------------------------------------------------- */
 	return 0;
 }
