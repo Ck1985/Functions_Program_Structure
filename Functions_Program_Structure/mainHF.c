@@ -6,7 +6,7 @@
 
 #define MAXOPHF 100
 
-/*int main() {
+int main() {
 	int type;
 	double op2;
 	char s[MAXOPHF];
@@ -45,4 +45,4 @@
 	}
 
 	return 0;
-}*/
+}
