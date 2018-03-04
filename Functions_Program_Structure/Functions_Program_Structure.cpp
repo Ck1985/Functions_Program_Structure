@@ -538,7 +538,7 @@ int main() {
 	printf("a = %d & b = %d\n", a, b);*/
 	
 	// ---------- Conditional Inclusion ------------------- */
-	#if SIZE > 99
+	/*#if SIZE > 99
 		printf("For 100 plus elements\n");
 	#else
 		printf("For less than 100 elements\n");
@@ -564,8 +564,13 @@ int main() {
 			printf("PI is defined\n");
 	#else 
 		#define PI 3.14
-	#endif
+	#endif*/
 	/* ---------------------------------------------------- */
+
+	char line[15];
+	int lim = 15;
+	int result = getline(line, lim);
+	printf("%d\n", result);
 	return 0;
 }
 
@@ -772,28 +777,28 @@ void quicksort(int arr[], int low, int high) {
 	}
 
 	for (int i = low; i <= high; i++) {
-			if (arr[i] < arr[pivotIndex]) {
-				if (firstOnIndex == -1) {
-					swap(arr, low, i);
-					offIndex = i;
-				}
-				else {
-					swap(arr, i, firstOnIndex);
-					offIndex = firstOnIndex;
-					firstOnIndex = i;
-				}
-				lastOffIndex = offIndex;
+		if (arr[i] < arr[pivotIndex]) {
+			if (firstOnIndex == -1) {
+				swap(arr, low, i);
+				offIndex = i;
 			}
 			else {
-				if (countFirst == 1) {
-					firstOnIndex = i;
-					countFirst++;
-				}
+				swap(arr, i, firstOnIndex);
+				offIndex = firstOnIndex;
+				firstOnIndex = i;
 			}
-			for (int j = 0; j < 10; j++) {
-				printf("%d ", arr[j]);
+			lastOffIndex = offIndex;
+		}
+		else {
+			if (countFirst == 1) {
+				firstOnIndex = i;
+				countFirst++;
 			}
-			printf("\n");
+		}
+		for (int j = 0; j < 10; j++) {
+			printf("%d ", arr[j]);
+		}
+		printf("\n");
 	}
 	swap(arr, pivotIndex, lastOffIndex);
 	pivotIndex = lastOffIndex;
